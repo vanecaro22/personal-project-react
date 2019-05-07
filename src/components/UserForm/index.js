@@ -6,9 +6,8 @@ const Button = styled.button`
   color: white;
 `;
 
-const UserForm = () => {
+const UserForm = ({ setEvents }) => {
   const [ username, setUsername ] = useState('')
-  const [ events, setEvents] = useState([])
 
   const onChange = (event) => {
     setUsername(event.target.value)
@@ -31,12 +30,6 @@ const UserForm = () => {
     <form onSubmit={onSubmit}>
       <input placeholder="Username" value={username} onChange={onChange}/>
       <Button>Search</Button>
-
-      <ul>
-        {events.map(r =>
-          <li key={r.id}>{r.repo.name}</li>
-        )}
-      </ul>
     </form>
   )
 }
