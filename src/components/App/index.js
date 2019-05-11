@@ -3,13 +3,9 @@ import './App.css';
 import UserForm from '../UserForm';
 import PullRequestList from '../PullRequestList'
 import ForkList from '../ForkList'
+import { connect } from 'react-redux'
 
-const filterByType = (type, events) => {
-  return events.filter(event => event.type === type)
-}
-
-function App() {
-  const [ events, setEvents ] = useState([])
+function App ({ events }) {
   const [ pullRequests, setPullRequests ] = useState([])
 
   const prEvents = useMemo(
@@ -28,11 +24,11 @@ function App() {
       }))))
   }, [prEvents])
 
-  const forkEvents = useMemo(() => filterByType('ForkEvent', events), [events])
+  const forkEvents = useMemo(() => events.filter(event => event.type === 'ForkEvent'), [events])
 
   return (
     <div className="App">
-      <UserForm setEvents={setEvents} />
+      <UserForm />
 
       {pullRequests.length > 0 && <h1>Pull Requests</h1>}
       <PullRequestList pullRequests={pullRequests} />
@@ -43,4 +39,12 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    events: state.events.events
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(App)
