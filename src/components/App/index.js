@@ -24,7 +24,6 @@ function App ({ events }) {
       }))))
   }, [prEvents])
 
-  const forkEvents = useMemo(() => events.filter(event => event.type === 'ForkEvent'), [events])
 
   return (
     <div className="App">
@@ -33,8 +32,7 @@ function App ({ events }) {
       {pullRequests.length > 0 && <h1>Pull Requests</h1>}
       <PullRequestList pullRequests={pullRequests} />
 
-      {forkEvents.length > 0 && <h1>Forked Repos</h1>}
-      <ForkList events={forkEvents} />
+      <ForkList />
     </div>
   );
 }

@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { addEvents } from '../../actions'
+import { fetchEvents } from '../../actions'
 
 const Button = styled.button`
   background-color: teal;
   color: white;
 `;
 
-const UserForm = ({ addEvents }) => {
+const UserForm = ({ fetchEvents }) => {
   const [ username, setUsername ] = useState('')
 
   const onChange = (event) => {
@@ -20,12 +20,7 @@ const UserForm = ({ addEvents }) => {
 
     if (!username) { return }
 
-     fetch(`https://api.github.com/users/${username}/events`)
-      .then(res => res.json())
-      .then(events => {
-        addEvents(events || [])
-      })
-      .catch(err => console.error(err))
+    fetchEvents(username)
   }
 
   return (
@@ -37,7 +32,7 @@ const UserForm = ({ addEvents }) => {
 }
 
 const mapDispatchToProps = {
-  addEvents
+  fetchEvents
 }
 
 export default connect(

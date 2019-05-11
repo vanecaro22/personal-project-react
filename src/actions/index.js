@@ -4,11 +4,18 @@ export const ACTION_TYPES = {
   addEvents: 'ADD_EVENTS'
 }
 
-export const addEvents = (events) => {
-  return {
-    type: ACTION_TYPES.addEvents,
-    payload: {
-      events
-    }
+const addEvents = (events = []) => ({
+  type: ACTION_TYPES.addEvents,
+  payload: {
+    events: events
   }
+})
+
+export const fetchEvents = (username) => (dispatch) => {
+  fetch(`https://api.github.com/users/${username}/events`)
+   .then(res => res.json())
+   .then(events => {
+     dispatch(addEvents(events))
+   })
+   .catch(err => console.error(err))
 }
