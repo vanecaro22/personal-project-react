@@ -21,7 +21,7 @@ const UserForm = ({ setEvents }) => {
      fetch(`https://api.github.com/users/${username}/events`)
       .then(res => res.json())
       .then(events => {
-        setEvents(events)
+        setEvents(events || [])
       })
       .catch(err => console.error(err))
   }
