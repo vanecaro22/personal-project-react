@@ -34,10 +34,7 @@ function App() {
 
   useEffect(() => {
     Promise.all(prEvents.map(event => fetch(event.payload.pull_request.url).then(res => res.json())))
-      .then(prs => setPullRequests(prs.map((pr, i) => ({
-        ...pr,
-        repo_name: prEvents[i].repo.name
-      }))))
+      .then(prs => setPullRequests(prs))
   }, [prEvents])
 
   const forkEvents = useMemo(() => filterByType('ForkEvent', events), [events])
@@ -47,11 +44,11 @@ function App() {
       <UserForm setEvents={setEvents} />
       <div className="row">
         <div className="col">
-          {pullRequests.length > 0 && <h1>Pull Requests</h1>}
+          {pullRequests.length > 0 && <h2 className="mb-4">Pull Requests</h2>}
           <PullRequestList pullRequests={pullRequests} />
         </div>
         <div className="col">
-          {forkEvents.length > 0 && <h1>Forked Repos</h1>}
+          {forkEvents.length > 0 && <h2 className="mb-4">Forked Repos</h2>}
           <ForkList events={forkEvents} />
         </div>
       </div>
