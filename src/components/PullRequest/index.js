@@ -6,7 +6,7 @@ const PullRequest = ({ data }) => {
     <li>
       <a href={data.repository_url} target="_blank">{data.repo_name}</a>
       &nbsp;
-      [{data.state}]
+      [{data.merged? 'merged' : data.state}]
     </li>
   )
 }

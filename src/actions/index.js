@@ -29,7 +29,7 @@ export const fetchEvents = (username) => (dispatch) => {
 }
 
 export const fetchPullRequests = (prEvents) => (dispatch) => {
-  Promise.all(prEvents.map(event => fetch(event.payload.pull_request.issue_url).then(res => res.json())))
+  Promise.all(prEvents.map(event => fetch(event.payload.pull_request.url).then(res => res.json())))
     .then(data => {
       const prs = data.map((pr, i) => ({
         ...pr,
