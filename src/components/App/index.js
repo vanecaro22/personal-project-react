@@ -1,8 +1,20 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import './App.css';
 import UserForm from '../UserForm';
 import PullRequestList from '../PullRequestList'
 import ForkList from '../ForkList'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  border: 1px solid #E1E4E8;
+  border-radius: 5px;
+  max-width: 900px;
+  min-height: 700px;
+  margin-left: auto;
+  margin-right: auto
+  margin-top: 60px;
+  padding: 40px;
+  background-color: white;
+`;
 
 const filterByType = (type, events) => {
   return events.filter(event => event.type === type)
@@ -31,7 +43,7 @@ function App() {
   const forkEvents = useMemo(() => filterByType('ForkEvent', events), [events])
 
   return (
-    <div className="App">
+    <Wrapper>
       <UserForm setEvents={setEvents} />
 
       {pullRequests.length > 0 && <h1>Pull Requests</h1>}
@@ -39,7 +51,7 @@ function App() {
 
       {forkEvents.length > 0 && <h1>Forked Repos</h1>}
       <ForkList events={forkEvents} />
-    </div>
+    </Wrapper>
   );
 }
 
