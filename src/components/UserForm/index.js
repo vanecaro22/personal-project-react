@@ -4,9 +4,15 @@ import { connect } from 'react-redux'
 import { fetchEvents } from '../../actions'
 
 const Button = styled.button`
-  background-color: teal;
-  color: white;
+  &&& {
+    background-color: teal;
+    color: white;
+  }
 `;
+
+const Form = styled.form`
+  margin-bottom: 50px;
+`
 
 const UserForm = ({ fetchEvents }) => {
   const [ username, setUsername ] = useState('')
@@ -21,13 +27,20 @@ const UserForm = ({ fetchEvents }) => {
     if (!username) { return }
 
     fetchEvents(username)
+      .then(events => {
+        setUsername('')
+      })
   }
 
   return (
-    <form onSubmit={onSubmit}>
-      <input placeholder="Username" value={username} onChange={onChange}/>
-      <Button>Search</Button>
-    </form>
+    <Form onSubmit={onSubmit}>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Username" value={username} onChange={onChange}/>
+        <div class="input-group-append">
+          <Button className="btn" type="button">Button</Button>
+        </div>
+      </div>
+    </Form>
   )
 }
 

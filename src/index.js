@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as serviceWorker from './serviceWorker';
-import './index.css';
-
-import { Provider } from 'react-redux'
 import App from './components/App';
+import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux'
 import createStore from './store'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 ReactDOM.render(
   <Provider store={createStore()}>
     <App />
-  </Provider>, 
+  </Provider>,
   document.getElementById('root')
 );
 

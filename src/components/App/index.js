@@ -21,10 +21,15 @@ function App () {
     <Wrapper>
       <UserForm />
 
-      <PullRequestList />
-
-      <ForkList />
-    </div>
+      <div className="row">
+        <div className="col">
+          <PullRequestList />
+        </div>
+        <div className="col">
+          <ForkList />
+        </div>
+      </div>
+    </Wrapper>
   );
 }
 
