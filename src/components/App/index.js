@@ -21,7 +21,7 @@ function App() {
   )
 
   useEffect(() => {
-    Promise.all(prEvents.map(event => fetch(event.payload.pull_request.issue_url).then(res => res.json())))
+    Promise.all(prEvents.map(event => fetch(event.payload.pull_request.url).then(res => res.json())))
       .then(prs => setPullRequests(prs.map((pr, i) => ({
         ...pr,
         repo_name: prEvents[i].repo.name
