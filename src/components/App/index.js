@@ -45,12 +45,16 @@ function App() {
   return (
     <Wrapper>
       <UserForm setEvents={setEvents} />
-
-      {pullRequests.length > 0 && <h1>Pull Requests</h1>}
-      <PullRequestList pullRequests={pullRequests} />
-
-      {forkEvents.length > 0 && <h1>Forked Repos</h1>}
-      <ForkList events={forkEvents} />
+      <div className="row">
+        <div className="col">
+          {pullRequests.length > 0 && <h1>Pull Requests</h1>}
+          <PullRequestList pullRequests={pullRequests} />
+        </div>
+        <div className="col">
+          {forkEvents.length > 0 && <h1>Forked Repos</h1>}
+          <ForkList events={forkEvents} />
+        </div>
+      </div>
     </Wrapper>
   );
 }
