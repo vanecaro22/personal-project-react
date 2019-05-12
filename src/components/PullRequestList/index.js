@@ -20,7 +20,7 @@ const PullRequestList = ({ events, pullRequests, fetchPullRequests }) => {
 
   return (
     <>
-      {pullRequests.length > 0 && <h1>Pull Requests</h1>}
+      {pullRequests.length > 0 && <h2 className="mb-4">Pull Requests</h2>}
       <ul>
         {pullRequests.map(pr => <PullRequest key={pr.id} data={pr} />)}
       </ul>
