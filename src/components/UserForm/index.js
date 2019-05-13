@@ -37,7 +37,7 @@ const UserForm = ({ fetchEvents }) => {
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Username" value={username} onChange={onChange}/>
         <div class="input-group-append">
-          <Button className="btn" type="button">Button</Button>
+          <Button className="btn" type="button">Search</Button>
         </div>
       </div>
     </Form>
