@@ -9,7 +9,12 @@ const Ul = styled.ul`
 `
 
 const ForkList = ({ events }) => {
-  const forkEvents = useMemo(() => events.filter(event => event.type === 'ForkEvent'), [events])
+  const forkEvents = useMemo(
+    () => events
+    .filter(event => event.type === 'ForkEvent')
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    .slice(0, 9),
+    [events])
 
   return (
     <>

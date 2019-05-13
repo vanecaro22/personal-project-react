@@ -10,7 +10,7 @@ const PullRequestList = ({ events, pullRequests, fetchPullRequests }) => {
     () => events
       .filter(event => event.type === 'PullRequestEvent' && event.payload.pull_request.state === 'open')
       .sort((a, b) => new Date(b.payload.pull_request.created_at) - new Date(a.payload.pull_request.created_at))
-      .slice(0, 4),
+      .slice(0, 9),
     [events]
   )
 

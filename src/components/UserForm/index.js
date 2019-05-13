@@ -5,7 +5,7 @@ import { fetchEvents } from '../../actions'
 
 const Button = styled.button`
   &&& {
-    background-color: teal;
+    background-color: #76CCC2;
     color: white;
   }
 `;
