@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
   &&& {
-    background-color: teal;
+    background-color: #76CCC2;
     color: white;
   }
 `;
@@ -38,7 +38,7 @@ const UserForm = ({ setEvents }) => {
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Username" value={username} onChange={onChange}/>
         <div class="input-group-append">
-          <Button className="btn" type="button">Button</Button>
+          <Button className="btn" type="button">Search</Button>
         </div>
       </div>
     </Form>
