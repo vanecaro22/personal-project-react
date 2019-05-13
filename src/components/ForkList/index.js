@@ -14,9 +14,9 @@ const ForkList = ({ events }) => {
   return (
     <>
       {forkEvents.length > 0 && <h2 className="mb-4">Forked Repos</h2>}
-      <ul>
+      <Ul>
         {forkEvents.map(event => <ForkEvent key={event.id} event={event}/>)}
-      </ul>
+      </Ul>
     </>
   )
 }
