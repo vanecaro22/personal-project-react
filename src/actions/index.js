@@ -20,7 +20,7 @@ const addPullRequests = (pullRequests) => ({
 })
 
 export const fetchEvents = (username) => (dispatch) => {
-  fetch(`https://api.github.com/users/${username}/events`)
+  return fetch(`https://api.github.com/users/${username}/events`)
    .then(res => res.json())
    .then(events => {
      dispatch(addEvents(events))
