@@ -28,7 +28,7 @@ function App() {
     () => events
       .filter(event => event.type === 'PullRequestEvent' && event.payload.pull_request.state === 'open')
       .sort((a, b) => new Date(b.payload.pull_request.created_at) - new Date(a.payload.pull_request.created_at))
-      .slice(0, 4),
+      .slice(0, 9),
     [events]
   )
 
@@ -37,7 +37,13 @@ function App() {
       .then(prs => setPullRequests(prs))
   }, [prEvents])
 
-  const forkEvents = useMemo(() => filterByType('ForkEvent', events), [events])
+  const forkEvents = useMemo(
+    () =>
+    filterByType('ForkEvent', events)
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    .slice(0, 9),
+    [events]
+  )
 
   return (
     <Wrapper>
